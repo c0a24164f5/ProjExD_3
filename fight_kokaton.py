@@ -107,7 +107,7 @@ class Score:
         screen.blit(img, (100, HEIGHT - 50))
 
 class Explosion:
-    def __init__(self, center: tuple[int, int]) :
+    def __init__(self, center: tuple[int, int]) :  #爆弾が破壊されたときに表示される爆発エフェクトを表すクラス
         self.img = pg.image.load("fig/explosion.gif")
         self.rct = self.img.get_rect(center=center)
         self.life = 10
@@ -149,7 +149,7 @@ def main():
                     time.sleep(1)
                     return 
 
-        for beam in beams[:]:
+        for beam in beams[ : ]:
             for i, bomb in enumerate(bombs):
                 if bomb is not None and beam.rct.colliderect(bomb.rct):
                     explosions.append(Explosion(bomb.rct.center))
@@ -180,6 +180,8 @@ def main():
         pg.display.update()
         tmr += 1
         clock.tick(50)
+        
+        
 
 if __name__ == "__main__":
     pg.init()
